@@ -6,8 +6,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <main>
+    <%= render partial: 'layouts/nav' %>
+    <div style="margin: 0px 40px;">
+      <%= yield %>
+    </div>
+  </main>
 
-<%= yield %>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About this app</h5>
+          <p class="grey-text text-lighten-4">Have you ever thought of completely changing something negative
+          to positive before? This is what we have done to this application. It used to be the worst rails application
+          but has been transformed from being slow to being a very fast rails application. </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Quick Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href= <%= stats_index_path %>>Stats</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © <%= Time.now.to_date.year%> Copyright Text
+      <scan class="grey-text text-lighten-4 right">Made with &#128151 from <a href="andela.com">Andela</a></scan>
+      </div>
+    </div>
+  </footer>
+
 
 </body>
 </html>

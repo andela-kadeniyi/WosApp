@@ -1,15 +1,28 @@
-<h1>Some of the most inefficient ActiveRecord Querying ever.</h1>
+<label>This used to be one of the most inefficient ActiveRecord Querying ever.</label>
 
 <div class="stats-section">
-  <div>Most prolific author: <%= @prolific_author.name %> </div>
-  <div>Author with most upvoted article: <%= @author_with_most_upvoted_article %> </div>
-  <p style="text-decoration: underline">Five longest article names:</p>
-  <% @five_longest_article_names.each do |name| %>
-    <li> <%= name %> </li>
-  <% end %>
 
-  <p style="text-decoration: underline">List of all the article names (TOO LONG)</p>
-  <% @article_names.each do |name| %>
-    <li><%= name %></li>
-  <% end %>
+  <ul class="collection with-header">
+    <li class="collection-header"><h4>Most prolific author</h4></li>
+    <li class="collection-item"><div><%= @prolific_author.name %></div></li>
+  </ul>
+
+  <ul class="collection with-header">
+    <li class="collection-header"><h4>Author with most upvoted article</h4></li>
+    <li class="collection-item"><div><%= @author_with_most_upvoted_article %></div></li>
+  </ul>
+
+  <ul class="collection with-header">
+    <li class="collection-header"><h4>Five longest article names</h4></li>
+      <% @five_longest_article_names.each do |name| %>
+        <li class="collection-item"><div><%= name %></div></li>
+      <% end %>
+  </ul>
+
+  <ul class="collection with-header">
+    <li class="collection-header"><h4>List of all the article names (TOO LONG)</h4></li>
+      <% @article_names.each do |name| %>
+        <li class="collection-item"><div><%= name %></div></li>
+      <% end %>
+  </ul>
 </div>

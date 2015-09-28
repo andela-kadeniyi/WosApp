@@ -1,14 +1,21 @@
-<h1> This is a terrible authors index page. One of the worst ever. </h1>
+<label> This used to be a very terrible authors index page. One of the worst ever. </label>
 
-<nav style="background-color: #9AEEE8">
-  <%= link_to "Stats", stats_index_path %>
-</nav>
-
-<div class="author">
-  <% @authors.each do |author| %>
-    <h2>My name is <%= author.name %></h2>
-    <% author.articles.each do |art| %>
-      <p>I wrote: <span style="text-decoration: underline"><%= link_to art.name, articles_show_path(art) %> </span></p>
+  <div class="row">
+    <% cache(cache_key_for_authors) do%>
+      <% @authors.each do |author| %>
+          <div class="col l3 s12 m6">
+            <div class="card teal darken-1" style="overflow-y:scroll; height: 250px">
+              <div class="card-content white-text">
+                <span class="card-title center">Author</span>
+                <h5><%= author.name %></h5>
+              </div>
+              <div class="card-action">
+                <% author.articles.each do |art| %>
+                  <p class="white-text">I wrote: <span style="text-decoration: underline"><%= link_to truncate(art.name, length: 16), articles_show_path(art), class: "white-text" %> </span></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>

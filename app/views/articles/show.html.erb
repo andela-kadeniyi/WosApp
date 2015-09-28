@@ -1,13 +1,18 @@
-<h1>Terrible article show page</h1>
-<h3><%= @article.name %></h1>
+<!-- <label>Terrible article show page</label> -->
+<div class="row grey lighten-4" style="margin: 10px 0px; padding: 10px">
+  <div class="col l12 m12 s12">
+    <h3><%= @article.name %></h1>
 
-<p> Article body: <%= @article.body %></p>
+    <p> Article body: <%= @article.body %></p>
+    <p> Author: <%= @article.author.name %></p>
 
-<h2>Comments section</h2>
-<p>
-  <% @article.comments.each do |com| %>
-    <%= com.body.html_safe %>
-  <% end %>
-</p>
+    <h5>Comments</h5>
+    <div style=" padding: 5px; border-radius: 5px; margin: 5px 0px" class="grey lighten-1">
+      <% @article.comments.each do |com| %>
+        <p ><i class="blue-grey-text"><%= html_escape_once(com.author) %>:</i> <%= html_escape_once(com.body) %>  <label class="grey-text text-darken-1"><%= time_ago_in_words(com.created_at) %> ago</label></p>
+      <% end %>
+    </div>
 
-<%= link_to "New Comment", comments_new_path(article: @article.id) %>
+    <%= link_to "Add New Comments", comments_new_path(article: @article.id), class:"btn  waves-effect waves-light" %>
+  </div>
+</div>
