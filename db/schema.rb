@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20150927193804) do
     t.integer  "comments_count", default: 0
   end
 
-  add_index "articles", ["author_id"], name: "author_id_ix"
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
@@ -39,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150927193804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+  add_index "articles", ["author_id"], name: "author_id_ix"
   add_index "comments", ["article_id"], name: "article_id_ix"
 
 end
