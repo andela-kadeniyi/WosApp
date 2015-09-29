@@ -20,6 +20,7 @@ and
 ```bash
 rake db:seed
 ```
+.
 Once everything is set,
 ```bash
 rails s
