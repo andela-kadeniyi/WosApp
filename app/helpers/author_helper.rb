@@ -6,4 +6,5 @@ module AuthorHelper
     article_max_updated_at = Article.maximum(:updated_at).try(:utc).try(:to_s, :number)
     "authors/all-#{count_authors}-#{count_articles}-#{author_max_updated_at}-#{article_max_updated_at}"
   end
+  
 end

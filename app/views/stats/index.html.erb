@@ -1,26 +1,26 @@
-<label>This used to be one of the most inefficient ActiveRecord Querying ever.</label>
+<!-- <label>This used to be one of the most inefficient ActiveRecord Querying ever.</label> -->
 
 <div class="stats-section">
-
+  <h2> Hall of Fame </h2>
   <ul class="collection with-header">
-    <li class="collection-header"><h4>Most prolific author</h4></li>
+    <li class="collection-header"><h5>Most prolific author</h5></li>
     <li class="collection-item"><div><%= @prolific_author.name %></div></li>
   </ul>
 
   <ul class="collection with-header">
-    <li class="collection-header"><h4>Author with most upvoted article</h4></li>
+    <li class="collection-header"><h5>Author with most upvoted article</h5></li>
     <li class="collection-item"><div><%= @author_with_most_upvoted_article %></div></li>
   </ul>
 
   <ul class="collection with-header">
-    <li class="collection-header"><h4>Five longest article names</h4></li>
+    <li class="collection-header"><h5>Five longest article names</h5></li>
       <% @five_longest_article_names.each do |name| %>
         <li class="collection-item"><div><%= name %></div></li>
       <% end %>
   </ul>
 
   <ul class="collection with-header">
-    <li class="collection-header"><h4>List of all the article names (TOO LONG)</h4></li>
+    <li class="collection-header"><h5>List of all the article names (TOO LONG)</h5></li>
       <% @article_names.each do |name| %>
         <li class="collection-item"><div><%= name %></div></li>
       <% end %>

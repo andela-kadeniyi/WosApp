@@ -1,10 +1,35 @@
-# Andela Rails Checkpoint #3
+# Andela Rails Checkpoint #4
+This project is all about the optimization of a very slow ruby on rails application.
+To have a taste of what this application looks like before optimization, switch to `project` branch after cloning this repo.
 
-1. Git clone this app and follow the instructions below.
-
+Run
 ```bash
-git clone git@github.com:andela/checkpoint_rails_worst_app.git
+git clone https://github.com/andela-kadeniyi/WosApp.git
 ```
+then
+```bash
+git checkout project
+```
+to clone this project and switch to the project branch. Follow the problem description below to fix the `project` branch.
+
+Do not forget to run
+```bash
+rake db:migrate
+```
+and
+```bash
+rake db:seed
+```
+Once everything is set,
+```bash
+rails s
+```
+should start the app on 'localhost:3000'
+
+
+My optimized application can be found <a href="http://wosapp.herokuapp.com">here</a>
+
+##Problem Description
 
 ### This is one of the worst performing Rails apps ever.
 

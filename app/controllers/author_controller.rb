@@ -1,5 +1,5 @@
 class AuthorController < ApplicationController
   def index
-    @authors = Author.all.includes(:articles)
+    @authors = Author.paginate(:page => params[:page], :per_page => 20).includes(:articles)
   end
 end

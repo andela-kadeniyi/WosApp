@@ -3,7 +3,7 @@ class Author < ActiveRecord::Base
 
   def self.generate_authors(count=1000)
     count.times do
-      Fabricate(:author)
+      Fabricate(:author) 
     end
     first.articles << Article.create(name: "some commenter", body: "some body")
   end
