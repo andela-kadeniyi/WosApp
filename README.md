@@ -1,56 +1,33 @@
-# Andela Rails Checkpoint #4
-This project is all about the optimization of a very slow ruby on rails application.
-To have a taste of what this application looks like before optimization, switch to `project` branch after cloning this repo.
+# Andela Rails Checkpoint #3
 
-Run
-```bash
-git clone https://github.com/andela-kadeniyi/WosApp.git
-```
-then
-```bash
-git checkout project
-```
-to clone this project and switch to the project branch. Follow the problem description below to fix the `project` branch.
+1. Git clone this app and follow the instructions below.
 
-Do not forget to run
 ```bash
-rake db:migrate
+git clone git@github.com:andela/checkpoint_rails_worst_app.git
 ```
-and
-```bash
-rake db:seed
-```
-.
-Once everything is set,
-```bash
-rails s
-```
-should start the app on 'localhost:3000'
-
-
-My optimized application can be found <a href="http://wosapp.herokuapp.com">here</a>
-
-##Problem Description
 
 ### This is one of the worst performing Rails apps ever.
 
 Currently, the home page takes this long to load:
 
 ```bash
-Rendered author/index.html.erb within layouts/application (3521.1ms)
-Completed 200 OK in 3544ms (Views: 2697.2ms | ActiveRecord: 845.6ms)
+...
+Article Load (0.5ms)  SELECT "articles".* FROM "articles" WHERE "articles"."author_id" = ?  [["author_id", 3000]]
+Article Load (0.5ms)  SELECT "articles".* FROM "articles" WHERE "articles"."author_id" = ?  [["author_id", 3001]]
+Rendered author/index.html.erb within layouts/application (9615.5ms)
+Completed 200 OK in 9793ms (Views: 7236.5ms | ActiveRecord: 2550.1ms)
 ```
 
-The view takes 2.5 seconds to load. The AR querying takes 1 second to load. The page takes 3.5 seconds to load. That's not great.
+The view takes 7.2 seconds to load. The AR querying takes 2.5 second to load. The page takes close to 10 seconds to load. That's not great at all. That's just awful.
 
 The stats page is even worse:
 
 ```bash
-Rendered stats/index.html.erb within layouts/application (4.2ms)
-Completed 200 OK in 6322ms (Views: 21.5ms | ActiveRecord: 1663.7ms)
+Rendered stats/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 16197ms (Views: 38.0ms | ActiveRecord: 4389.4ms)
 ```
 
-It took 6 seconds to load and a lot of the time taken isn't even in the ActiveRecord querying or the view. It's the creation of ruby objects that is taking a lot of time. This will be explained in further detail below.
+It took 16 seconds to load and a lot of the time taken isn't even in the ActiveRecord querying or the view. It's the creation of ruby objects that is taking a lot of time. This will be explained in further detail below.
 
 So, **What can we do?**
 
@@ -60,12 +37,13 @@ Complete this tutorial first:
 [Jumpstart Lab Tutorial on Querying](http://tutorials.jumpstartlab.com/topics/performance/queries.html)
 
 # Requirements for this checkpoint
-* add an index to the right columns
-* implement caching
+* add an index to the correct columns
 * implement eager loading vs lazy loading on the right pages.
 * replace Ruby lookups with ActiveRecord methods.
 * fix html_safe issue.
-* page cache or fragment cache the home page
+* page cache or fragment cache the root page.
+* No need for testing, but you need to get the time down to a reasonable time for both pages.
+* The root page needs to implement includes, pagination, and fragment caching.
 
 ##### Index some columns. But what should we index?
 
@@ -144,4 +122,12 @@ Understand now? Fix the problem.
 
 ##### Caching
 
+Our main view currently takes 4 seconds to load
+
+```bash
+Rendered author/index.html.erb within layouts/application (5251.7ms)
+Completed 200 OK in 5269ms (Views: 4313.1ms | ActiveRecord: 955.6ms)
+```
+
+Let's fix that. Read this:
 [fragment caching](http://guides.rubyonrails.org/caching_with_rails.html#fragment-caching)

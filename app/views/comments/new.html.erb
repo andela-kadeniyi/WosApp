@@ -1,22 +1,12 @@
-<div class="row">
-  <%= form_for @comment, class: "col s12" do |f| %>
-    <div class="row">
-      <div class="col l4 m8 s12">
-        <%= f.label :author, class: "flow-text" %>
-        <%= f.text_field :author, class: "validate" %>
-      </div>
-    </div>
+<%= form_for @comment do |f| %>
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+  <br>
 
-    <div class="row">
-      <div class="col l6 m8 s12">
-        <%= f.label :body, class: "flow-text" %>
-        <%= f.text_area :body, class:"materialize-textarea", id:"textarea1" %>
-        <!-- <label for="textarea1">Textarea</label> -->
-      </div>
-    </div>
+  <%= f.label :body %>
+  <%= f.text_area :body, size: "60x12" %>
 
-    <br>
-    <%= f.hidden_field :article, value: @article.id %>
-    <%= f.submit "Create", class: "btn  waves-effect waves-light" %>
-  <% end %>
-</div>
+  <%= f.hidden_field :article, value: @article.id %>
+  
+  <%= f.submit "Create" %>
+<% end %>

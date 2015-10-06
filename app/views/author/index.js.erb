@@ -1,7 +1,0 @@
-$("#author").append('<%= j render('authors') %>');
-
-<% if @authors.next_page %>
-  $(".pagination").replaceWith('<%= j will_paginate @authors %>')
-<% else %>
-  $(".pagination").remove()
-<% end %>

@@ -11,25 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927193804) do
+ActiveRecord::Schema.define(version: 20150903144122) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "name"
     t.text     "body"
     t.integer  "author_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "upvotes"
-    t.integer  "comments_count", default: 0
   end
-
-  add_index "articles", ["author_id"], name: "author_id_ix"
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "articles_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -39,7 +35,5 @@ ActiveRecord::Schema.define(version: 20150927193804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "comments", ["article_id"], name: "article_id_ix"
 
 end

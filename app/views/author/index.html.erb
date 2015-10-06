@@ -1,10 +1,16 @@
-<!-- <label> This used to be a very terrible authors index page. One of the worst ever. </label> -->
+<h1> This is a terrible authors index page. One of the worst ever. </h1>
 
-<div class="row">
-  <% cache(cache_key_for_authors) do%>
-    <div id="author" >
-      <%= render partial: "authors" %>
-    </div>
+<nav style="background-color: #9AEEE8">
+  <%= link_to "Stats", stats_index_path %>
+</nav>
+
+<div class="author">
+  <% @authors.each do |author| %>
+
+      <h2>My name is <%= author.name %></h2>
+      <% author.articles.each do |art| %>
+        <p>I wrote: <span style="text-decoration: underline"><%= link_to art.name, articles_show_path(art) %> </span></p>
+      <% end %>
+
   <% end %>
 </div>
-<%= will_paginate @authors %>
