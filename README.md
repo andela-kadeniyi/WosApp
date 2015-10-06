@@ -12,14 +12,11 @@ git checkout project
 ```
 to clone this project and switch to the project branch. Follow the problem description below to fix the `project` branch.
 
-Do not forget to run
+Be sure to run
 ```bash
-rake db:migrate
+rake db:reset
 ```
-and
-```bash
-rake db:seed
-```
+so that the db for the other branch can be reset
 .
 Once everything is set,
 ```bash
