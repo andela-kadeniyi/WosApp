@@ -5,6 +5,11 @@
 ```bash
 git clone git@github.com:andela/checkpoint_rails_worst_app.git
 ```
+Be sure to run
+```bash
+rake db:reset
+```
+so that the db for the other branch can be reset
 
 ### This is one of the worst performing Rails apps ever.
 
